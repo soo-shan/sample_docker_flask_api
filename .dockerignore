@@ -1,0 +1,6 @@
+**/.git/
+**/__pycache__/
+**/test_call2api.py
+**/.gitignore
+**/*.pdf
+**//vscode/

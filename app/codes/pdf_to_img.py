@@ -1,12 +1,23 @@
 #%%
-import io
+import os
 import fitz
 
 from base64 import encodebytes
+
 #%%
+import logging
+
+#%%
+loglevel = os.environ.get("LOGLEVEL","INFO")
+numeric_level = getattr(logging, loglevel.upper(), None) 
+if not isinstance(numeric_level, int):
+    raise ValueError('Invalid log level: %s' % loglevel)
+logging.basicConfig(level=numeric_level)
 
 def pdf2img(fname):
-    
+
+    logging.info("Calling pdf2img function") 
+
     binary_images = []
     doc = fitz.open("pdf",fname.read())  # open document
     for page in doc:  # iterate through the pages
